@@ -3,6 +3,7 @@ import { connectToDatabase } from "./db/connection.js";
 
 
 
+
 /*app.get("/user/:id", (req, res, next) => {
   console.log(req.params.id)
   return res.send("Hello");

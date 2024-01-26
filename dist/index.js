@@ -1,15 +1,13 @@
-import express from "express";
-const app = express();
-// app variable holds the functionality of the express variable
-// GET - want to get data from database
-// PUT - modify or update data
-// POST - send data
-// DELETE - send some data to delete something
-app.use(express.json());
-app.get("/user/:id", (req, res, next) => {
-    console.log(req.params.id);
-    return res.send("Hello");
-});
-app.listen(5000, () => console.log("Server Open"));
-//5000 is a port number
+import app from "./app.js";
+import { connectToDatabase } from "./db/connection.js";
+/*app.get("/user/:id", (req, res, next) => {
+  console.log(req.params.id)
+  return res.send("Hello");
+})*/
+//connections and listeners
+const PORT = process.env.PORT || 5000;
+connectToDatabase().then(() => {
+    app.listen(5000, () => console.log("Server Open & connected to database"));
+    //5000 is a port number
+}).catch((err) => console.log(err));
 //# sourceMappingURL=index.js.map

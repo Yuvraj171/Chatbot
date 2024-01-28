@@ -48,9 +48,12 @@ export const userSignup = async (req, res, next) => {
     }
 };
 export const userLogin = async (req, res, next) => {
+    console.log(req.body);
     try {
         //User login
         const { email, password } = req.body;
+        console.log(email);
+        console.log(password);
         const user = await User.findOne({ email });
         if (!user) {
             return res.status(401).send("User not registered");

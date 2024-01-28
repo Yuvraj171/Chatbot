@@ -72,11 +72,12 @@ export const userLogin = async(
     next: NextFunction,
 ) => {
    
-    
+    console.log(req.body);
     try {
          //User login
          const { email, password } = req.body;
-
+        console.log(email);
+        console.log(password);
          const user = await User.findOne({ email });
         if (!user) {
             return res.status(401).send("User not registered")
@@ -110,7 +111,7 @@ export const userLogin = async(
         console.log(error);
 
         return res.status(200).json({ message: "ERROR", cause: error.message });
-    }
+        }
 };
 
 
